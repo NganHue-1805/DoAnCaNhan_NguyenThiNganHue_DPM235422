@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "NGUYEN THI NGAN HUE",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard", "id": "bb1", "top": 217.8, "left": -294.8, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -172.8, "left": -43.16, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -217.66,
+      "left": -306.97,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -247.2,
+      "left": 309,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 48.2, "left": 124.8, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -90,
+      "left": 253.4,
+      "attrs": { "color": "green" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 79.5, "left": -290.6, "attrs": {} },
+    { "type": "wokwi-led", "id": "led2", "top": -70.8, "left": -361, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 282.35,
+      "left": -57.6,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "oled1:GND", "bb1:tn.1", "black", [ "v-28.8", "h-115.2", "v441.7" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v-28.8", "h230.4" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v-48", "h345.9", "v67.2" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v-76.8", "h364.87", "v124.8" ] ],
+    [ "bz1:2", "esp:2", "green", [ "v0" ] ],
+    [ "bz1:1", "bb1:tn.50", "black", [ "v0" ] ],
+    [ "relay1:COM", "bb1:tp.50", "green", [ "v-1.4", "h68.4", "v76.5" ] ],
+    [ "relay1:NO", "led1:A", "green", [ "h49.2", "v-88.2", "v-57.6" ] ],
+    [ "led1:C", "bb1:tn.46", "green", [ "v9.6", "h0.4", "v57.7" ] ],
+    [ "relay1:VCC", "bb1:tp.33", "red", [ "h0" ] ],
+    [ "relay1:GND", "bb1:tn.34", "black", [ "h0" ] ],
+    [ "relay1:IN", "esp:26", "green", [ "h-38.4", "v-0.2", "h-163.2", "v-144" ] ],
+    [ "gas1:AOUT", "esp:35", "green", [ "h48", "v-192" ] ],
+    [ "led2:A", "r1:1", "green", [ "h9.6", "v316.8" ] ],
+    [ "led2:C", "bb1:tn.5", "green", [ "v230.4", "h154.8" ] ],
+    [ "r1:2", "esp:4", "green", [ "h85.2", "v-220.8" ] ],
+    [ "esp:GND.1", "bb1:tn.16", "black", [ "h-47.85", "v259.3" ] ],
+    [ "esp:5V", "bb1:tp.17", "red", [ "h0" ] ],
+    [ "r1:1", "bb1:23t.c", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:29t.c", "", [ "$bb" ] ],
+    [ "gas1:VCC", "bb1:tp.10", "red", [ "h0" ] ],
+    [ "gas1:GND", "bb1:tn.11", "black", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
